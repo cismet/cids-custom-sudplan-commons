@@ -25,7 +25,14 @@
         <de.cismet.libDir>lib/localSudplan</de.cismet.libDir>
     </properties>
 
-    <dependencies/>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
