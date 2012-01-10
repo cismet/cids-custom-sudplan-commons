@@ -25,6 +25,7 @@ public final class SudplanConcurrency {
     private static final transient ThreadGroup SUDPLAN_THREAD_GROUP;
 
     private static final transient ExecutorService DL_POOL;
+    private static final transient ExecutorService MISC_POOL;
 
     static {
         final SecurityManager s = System.getSecurityManager();
@@ -32,7 +33,8 @@ public final class SudplanConcurrency {
 
         SUDPLAN_THREAD_GROUP = new ThreadGroup(parent, "Sudplan"); // NOI18N
 
-        DL_POOL = Executors.newFixedThreadPool(5, createThreadFactory("download")); // NOI18N
+        DL_POOL = CismetExecutors.newFixedThreadPool(5, createThreadFactory("download"));          // NOI18N
+        MISC_POOL = CismetExecutors.newFixedThreadPool(8, createThreadFactory("general-purpose")); // NOI18N
     }
 
     //~ Constructors -----------------------------------------------------------
@@ -76,6 +78,15 @@ public final class SudplanConcurrency {
      */
     public static ExecutorService getSudplanDownloadPool() {
         return DL_POOL;
+    }
+
+    /**
+     * DOCUMENT ME!
+     *
+     * @return  DOCUMENT ME!
+     */
+    public static ExecutorService getSudplanGeneralPurposePool() {
+        return MISC_POOL;
     }
 
     //~ Inner Classes ----------------------------------------------------------
