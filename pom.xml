@@ -58,4 +58,20 @@
             <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+            <!-- disabled because sudplan makes use of automatic generation -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-installed</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
